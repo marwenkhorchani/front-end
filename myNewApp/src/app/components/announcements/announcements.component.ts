@@ -8,7 +8,8 @@ import { AnnouncementService } from './../../../services/announcement.service';
 })
 export class AnnouncementsComponent implements OnInit {
   displayModal: boolean = false;
-  id: any;
+  ann: any;
+  method: any;
   announcements: any;
   constructor(private service: AnnouncementService) {}
 
@@ -18,19 +19,17 @@ export class AnnouncementsComponent implements OnInit {
     });
   }
 
-  edit(id: string) {
-    console.log(id);
-  }
+  edit() {}
 
-  toggleModal(id: string) {
+  toggleModal(method: string, ann: any) {
     this.displayModal = true;
-    this.id = id;
+    this.method = method;
+    this.ann = ann;
   }
 
   delete() {
-    this.service.deleteOne(this.id).subscribe((res) => {
+    this.service.deleteOne(this.ann._id).subscribe((res) => {
       this.announcements = res;
-      this.id = null;
       this.displayModal = false;
     });
   }
@@ -40,7 +39,9 @@ export class AnnouncementsComponent implements OnInit {
       text: f.form.value.body,
       date: new Date(),
     };
-    this.announcements.push(obj);
-    this.displayModal = false;
+    this.service.add(obj).subscribe((res) => {
+      this.announcements.push(res);
+      this.displayModal = false;
+    });
   }
 }

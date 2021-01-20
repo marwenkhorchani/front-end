@@ -3,7 +3,7 @@
 <button
   style="margin: 5%"
   class="w3-button w3-xlarge w3-circle w3-red w3-card-4"
-  (click)="displayModal = true"
+  (click)="toggleModal('add', null)"
 >
   +
 </button>
@@ -13,8 +13,8 @@
     <strong>{{ ann.text }}</strong
     ><br /><br />{{ ann.date }}
     <div style="display: flex; float: right">
-      <button (click)="edit(ann._id)">edit</button
-      ><button (click)="toggleModal(ann._id)">delete</button>
+      <button (click)="toggleModal('edit', ann)">edit</button
+      ><button (click)="toggleModal('delete', ann)">delete</button>
     </div>
   </div>
 </div>
@@ -26,12 +26,12 @@
       <span class="close" (click)="displayModal = false">&times;</span>
       <h2>Modal Header</h2>
     </div>
-    <div class="modal-body" *ngIf="id">
+    <div class="modal-body" *ngIf="method === 'delete'">
       <p>Are you sure you want to delete</p>
       <button (click)="delete()">Yes</button
       ><button (click)="displayModal = false">No</button>
     </div>
-    <div class="modal-body" *ngIf="!id">
+    <div class="modal-body" *ngIf="method === 'add'">
       <p>New Announcement</p>
       <form #f="ngForm">
         <textarea
@@ -42,6 +42,19 @@
         ></textarea>
       </form>
       <button (click)="add(f)">Add</button
+      ><button (click)="displayModal = false">Cancel</button>
+    </div>
+    <div class="modal-body" *ngIf="method === 'edit'">
+      <p>Edit Announcement</p>
+      <form #f="ngForm">
+        <textarea
+          style="width: 80%; height: 16vh"
+          ngModel="{{ ann.text }}"
+          name="body"
+          placeholder="type here..."
+        ></textarea>
+      </form>
+      <button (click)="add(f)">Confirm</button
       ><button (click)="displayModal = false">Cancel</button>
     </div>
   </div>

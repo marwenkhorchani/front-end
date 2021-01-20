@@ -15,4 +15,8 @@ export class AnnouncementService {
   deleteOne(id: string) {
     return this.http.delete(environment.apiUrl + '/api/announcement/' + id);
   }
+
+  add(object: any) {
+    return this.http.post(environment.apiUrl + '/api/announcement', object);
+  }
 }
