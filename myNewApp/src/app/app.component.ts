@@ -7,8 +7,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor() {
-    console.log(`${environment.apiUrl}/api/user`);
-  }
+  constructor() {}
   title = 'myNewApp';
 }
