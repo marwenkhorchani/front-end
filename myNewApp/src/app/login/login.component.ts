@@ -1,45 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService} from '../services/login.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  username = '';
+  password = '';
+  role="";
+  status = localStorage['login_status'];
+  isLoggedIn = false;
 
-  loginForm: FormGroup;
+  constructor(private router: Router, private service: LoginService) {
+   
+  }
 
-  constructor(private _myservice: LoginService,
-    private _router: Router,
-    private _activatedRoute: ActivatedRoute) { 
-      this.loginForm = new FormGroup({
-        username: new FormControl(null, Validators.required),
-        password: new FormControl(null, Validators.required)
+  onlogin() {
+    
+    if (this.username.length == 0) {
+      alert('username field can not be empty');
+    } else if (this.password.length == 0) {
+      alert('password can not be empty');
+    } else {
+      this.service.login(this.username, this.password, this.role ).subscribe((res: any) => {
+       
+        if (res[0].username !== null && res[0].role === 'admin') {
+          localStorage['login_status'] = '1';
+          localStorage['_id'] = res[0]._id;
+          this.router.navigate(['/']);
+        } else if (res[0].role === 'student') {
+          localStorage['login_status'] = '1';
+          localStorage['_id'] = res[0]._id;
+          this.router.navigate(['/']);
+        }else if (res[0].role === 'teacher') {
+          localStorage['login_status'] = '1';
+          localStorage['_id'] = res[0]._id;
+          this.router.navigate(['/']);
+        } else if (res === null) {
+          alert('invaild username or password');
+        }
       });
     }
-
-  ngOnInit(): void {
   }
-  // isValid(controlName : any) {
-  //   return this.loginForm.get(controlName).invalid && this.loginForm.get(controlName).touched;
+
+ 
+
+  // onlogout() {
+  //   this.isLoggedIn = false;
+  //   localStorage['login_status']='0'
+  //   this.router.navigate(['/login']);
   // }
 
-  login() {
-    // console.log(this.loginForm.value);
-
-    if (this.loginForm.valid) {
-      this._myservice.login(this.loginForm.value)
-        .subscribe(
-          data => {
-            console.log(data);
-            localStorage.setItem('token', data.toString());
-            this._router.navigate(['/']);
-          },
-          error => { }
-        );
-    }
-  }
-
+  ngOnInit(): void {}
 }
