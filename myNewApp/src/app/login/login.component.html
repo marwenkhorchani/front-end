@@ -1,0 +1,35 @@
+
+
+<div class="container">
+  username: marwen , password:1234 , role: admin
+  <form>
+  <input
+    [(ngModel)]="username"
+    type="text"
+    id="login"
+    class="fadeIn second"
+    name="login"
+    placeholder="login"
+  />
+  <input
+    [(ngModel)]="password"
+    type="password"
+    id="password"
+    class="fadeIn third"
+    name="login"
+    placeholder="password"
+  />
+  <select name="login" id="role" [(ngModel)]="role">
+    <option value="admin">admin</option>
+    <option value="student">student</option>
+    <option value="teacher">teacher</option>
+    
+  </select>
+  <input
+    (click)="onlogin()"
+    type="submit"
+    class="fadeIn fourth"
+    value="Log In"
+  />
+</form>
+</div>
