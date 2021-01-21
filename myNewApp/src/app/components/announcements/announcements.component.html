@@ -11,7 +11,7 @@
 <div class="container">
   <div *ngFor="let ann of announcements" class="announcement">
     <strong>{{ ann.text }}</strong
-    ><br /><br />{{ ann.date }}
+    ><br /><br />{{ ann.date.slice(0, 7) + convertTime(ann.date) }}
     <div style="display: flex; float: right">
       <button (click)="toggleModal('edit', ann)">edit</button
       ><button (click)="toggleModal('delete', ann)">delete</button>
@@ -54,7 +54,7 @@
           placeholder="type here..."
         ></textarea>
       </form>
-      <button (click)="add(f)">Confirm</button
+      <button (click)="edit(f)">Confirm</button
       ><button (click)="displayModal = false">Cancel</button>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnnouncementService } from './../../../services/announcement.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-announcements',
@@ -7,6 +8,8 @@ import { AnnouncementService } from './../../../services/announcement.service';
   styleUrls: ['./announcements.component.css'],
 })
 export class AnnouncementsComponent implements OnInit {
+  x: any;
+  y: any;
   displayModal: boolean = false;
   ann: any;
   method: any;
@@ -14,12 +17,30 @@ export class AnnouncementsComponent implements OnInit {
   constructor(private service: AnnouncementService) {}
 
   ngOnInit(): void {
-    this.service.findAll().subscribe((res) => {
-      this.announcements = res;
+    this.service.findAll().subscribe((res: any) => {
+      this.announcements = res.sort((a: any, b: any) => {
+        this.x = new Date(b.date);
+        this.y = new Date(a.date);
+        return this.x - this.y;
+      });
     });
   }
 
-  edit() {}
+  edit(f: any) {
+    var obj = {
+      text: f.form.value.body,
+      date: 'Edited ' + new Date(),
+    };
+
+    this.service.update(obj, this.ann._id).subscribe((res: any) => {
+      this.announcements = res.sort((a: any, b: any) => {
+        this.x = new Date(b.date);
+        this.y = new Date(a.date);
+        return this.x - this.y;
+      });
+      this.displayModal = false;
+    });
+  }
 
   toggleModal(method: string, ann: any) {
     this.displayModal = true;
@@ -28,8 +49,12 @@ export class AnnouncementsComponent implements OnInit {
   }
 
   delete() {
-    this.service.deleteOne(this.ann._id).subscribe((res) => {
-      this.announcements = res;
+    this.service.deleteOne(this.ann._id).subscribe((res: any) => {
+      this.announcements = res.sort((a: any, b: any) => {
+        this.x = new Date(b.date);
+        this.y = new Date(a.date);
+        return this.x - this.y;
+      });
       this.displayModal = false;
     });
   }
@@ -37,11 +62,15 @@ export class AnnouncementsComponent implements OnInit {
   add(f: any) {
     let obj = {
       text: f.form.value.body,
-      date: new Date(),
+      date: 'Posted ' + new Date(),
     };
     this.service.add(obj).subscribe((res) => {
-      this.announcements.push(res);
+      this.announcements.unshift(res);
       this.displayModal = false;
     });
+  }
+
+  convertTime(date: any) {
+    return moment(date.slice(7, date.length)).fromNow();
   }
 }

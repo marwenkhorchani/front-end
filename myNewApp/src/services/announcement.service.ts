@@ -19,4 +19,11 @@ export class AnnouncementService {
   add(object: any) {
     return this.http.post(environment.apiUrl + '/api/announcement', object);
   }
+
+  update(object: any, id: string) {
+    return this.http.put(
+      environment.apiUrl + '/api/announcement/' + id,
+      object
+    );
+  }
 }
