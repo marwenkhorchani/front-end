@@ -1,16 +1,16 @@
-<div>
+<div class="podium body">
   <table class="table table-success">
     <thead>
       <tr>
-    
+        <th></th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Grade </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of podium">
-        
+      <tr *ngFor="let item of podium ; let i = index">
+        <th>{{arr[i]}}</th>
         <td>{{ item.firstname }}</td>
         <td>{{ item.lastname }}</td>
         <td>{{ item.grade }}</td>
@@ -19,7 +19,7 @@
     </tbody>
   </table>
 </div>
-<div>
+<div class ="list">
 <table class="table table-success">
   <thead>
     <tr>

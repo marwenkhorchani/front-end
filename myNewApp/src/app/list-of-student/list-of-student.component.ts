@@ -8,7 +8,7 @@ import { ListOfStudentsService } from '../services/list-of-students.service';
   styleUrls: ['./list-of-student.component.scss'],
 })
 export class ListOfStudentComponent implements OnInit {
-
+  arr: any=["Frist Best Grade","Second Best Grade","Third Best Grade"]
   allStudentsGrates: any=[];
   podium: any=[]
 
