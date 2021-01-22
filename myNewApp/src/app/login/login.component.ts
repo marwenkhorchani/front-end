@@ -25,16 +25,16 @@ export class LoginComponent implements OnInit {
       this.service
         .login(this.username, this.password, this.role)
         .subscribe((res: any) => {
-          if (res[0].username !== null && res[0].role === 'admin') {
+          if (res[0].username === this.username && res[0].password === this.password && res[0].role === 'admin') {
             localStorage.setItem('admin', JSON.stringify(res));
             localStorage['login_status'] = '1';
 
             this.router.navigate(['/']);
-          } else if (res[0].role === 'student') {
+          } else if (res[0].username === this.username && res[0].password === this.password && res[0].role === 'student') {
             localStorage['login_status'] = '1';
             localStorage.setItem('student', JSON.stringify(res));
             this.router.navigate(['/']);
-          } else if (res[0].role === 'teacher') {
+          } else if (res[0].username === this.username && res[0].password === this.password && res[0].role === 'teacher') {
             localStorage['login_status'] = '1';
             localStorage.setItem('teacher', JSON.stringify(res));
             this.router.navigate(['/']);
