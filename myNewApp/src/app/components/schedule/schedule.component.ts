@@ -33,9 +33,9 @@
         console.log(data)
         this.scheduleService.getService().subscribe((data)=>{
           this.result=data
-          // this.result=this.array.filter((data:any)=>{
-          //   return data.Description==="class3"
-          // })
+          this.result=this.array.filter((data:any)=>{
+            return data.Description===this.query
+          })
           this.eventSettings= {
            dataSource: this.result, 
         }
