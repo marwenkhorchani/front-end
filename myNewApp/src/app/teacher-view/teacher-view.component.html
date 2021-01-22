@@ -1,4 +1,4 @@
-<div class="mt-5">
+<div class="mt-5 container">
   <mat-tab-group>
     <mat-tab *ngFor="let class of classes" label="{{ class.name }}">
       <app-table-students [dataSource]="class.student"></app-table-students>

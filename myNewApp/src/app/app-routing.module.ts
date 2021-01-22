@@ -15,10 +15,9 @@ const routes: Routes = [
   { path: 'teacher-view', component: TeacherViewComponent },
   { path: 'teacher-profile', component: TeacherProfileComponent },
   { path: 'login', component: LoginComponent },
-  { path:'navbar-admin', component:NavbarAdminComponent},
-  { path:'navbar-student', component:NavbarStudentComponent},
-  { path:'navbar-teacher', component:NavbarTeacherComponent}
-
+  { path: 'navbar-admin', component: NavbarAdminComponent },
+  { path: 'navbar-student', component: NavbarStudentComponent },
+  { path: 'navbar-teacher', component: NavbarTeacherComponent },
 ];
 
 @NgModule({
