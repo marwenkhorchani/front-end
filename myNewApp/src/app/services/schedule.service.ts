@@ -18,4 +18,11 @@ export class ScheduleService {
   addService(body:any){
     return this.http.post(this.urlApi,body);
   }
+  deleteService(id:any){
+    return this.http.delete(`http://localhost:3030/api/schedule/${id}`);
+  }
+  updateService(id:any,body:any){
+    return this.http.put(`http://localhost:3030/api/schedule/${id}`,body);
+
+  }
 }
