@@ -7,10 +7,39 @@ import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.componen
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path:'navbar-admin', component:NavbarAdminComponent},
-  { path:'navbar-student', component:NavbarStudentComponent},
-  { path:'navbar-teacher', component:NavbarTeacherComponent}
-
+  {
+    path: 'admin',
+    component: NavbarAdminComponent,
+    children: [
+      {
+        path: '',
+        component: LoginComponent,
+        outlet: 'admin',
+      },
+    ],
+  },
+  {
+    path: 'student',
+    component: NavbarStudentComponent,
+    children: [
+      {
+        path: '',
+        component: LoginComponent,
+        outlet: 'student',
+      },
+    ],
+  },
+  {
+    path: 'teacher',
+    component: NavbarTeacherComponent,
+    children: [
+      {
+        path: '',
+        component: LoginComponent,
+        outlet: 'teacher',
+      },
+    ],
+  },
 ];
 
 @NgModule({
