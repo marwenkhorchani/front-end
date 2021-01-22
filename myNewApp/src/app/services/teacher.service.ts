@@ -12,10 +12,10 @@ export class TeacherService {
   constructor(private http: HttpClient) {}
 
   getTeacherById(id: any): Observable<any> {
-    return this.http.get(baseURL + 'teacher/' + id);
+    return this.http.get(baseURL + '/api/teacher/' + id);
   }
 
   getClassesById(id: any): Observable<any> {
-    return this.http.get(baseURL + 'class/' + id);
+    return this.http.get(baseURL + '/api/class/' + id);
   }
 }

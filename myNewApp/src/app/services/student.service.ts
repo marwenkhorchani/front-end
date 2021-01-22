@@ -9,6 +9,6 @@ const baseURL = environment.apiUrl;
 export class StudentService {
   constructor(private http: HttpClient) {}
   getStudentById(id: any): Observable<any> {
-    return this.http.get(baseURL + 'student/' + id);
+    return this.http.get(baseURL + '/api/student/' + id);
   }
 }

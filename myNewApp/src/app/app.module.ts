@@ -16,6 +16,10 @@ import { AddTeacherDialogComponent } from './add-teacher-dialog/add-teacher-dial
 import { AddAdminDialogComponent } from './add-admin-dialog/add-admin-dialog.component';
 import { TableStudentsComponent } from './table-students/table-students.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
+import { LoginComponent } from './login/login.component';
+import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
+import { NavbarStudentComponent } from './navbar-student/navbar-student.component';
+import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { TeacherProfileComponent } from './teacher-profile/teacher-profile.compo
     AddAdminDialogComponent,
     TableStudentsComponent,
     TeacherProfileComponent,
+    LoginComponent,
+    NavbarAdminComponent,
+    NavbarStudentComponent,
+    NavbarTeacherComponent,
   ],
   imports: [
     BrowserModule,
