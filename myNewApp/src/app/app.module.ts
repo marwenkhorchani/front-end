@@ -1,18 +1,46 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule  } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material-module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TeacherViewComponent } from './teacher-view/teacher-view.component';
+import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { AdminViewComponent } from './admin-view/admin-view.component';
+import { AddDialogComponent } from './add-dialog/add-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfoDialogComponent } from './info-dialog/info-dialog.component';
+import { AddTeacherDialogComponent } from './add-teacher-dialog/add-teacher-dialog.component';
+import { AddAdminDialogComponent } from './add-admin-dialog/add-admin-dialog.component';
+import { TableStudentsComponent } from './table-students/table-students.component';
+import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TeacherViewComponent,
+    StudentProfileComponent,
+    AdminViewComponent,
+    AddDialogComponent,
+    InfoDialogComponent,
+    AddTeacherDialogComponent,
+    AddAdminDialogComponent,
+    TableStudentsComponent,
+    TeacherProfileComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

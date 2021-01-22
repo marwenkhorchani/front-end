@@ -10,5 +10,6 @@ export class AppComponent {
   constructor() {
     console.log(`${environment.apiUrl}/api/user`);
   }
+
   title = 'myNewApp';
 }
