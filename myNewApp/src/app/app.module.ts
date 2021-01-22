@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule  } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EventsComponent } from './event/events/events.component';
+
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
@@ -13,20 +15,20 @@ import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.componen
 @NgModule({
   declarations: [
     AppComponent,
+    EventsComponent,
     LoginComponent,
     NavbarAdminComponent,
     NavbarStudentComponent,
-    NavbarTeacherComponent
+    NavbarTeacherComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
