@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnnouncementService } from './../../../services/announcement.service';
+import { AnnouncementService } from '../services/announcement.service';
 import * as moment from 'moment';
 
 @Component({
