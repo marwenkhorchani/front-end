@@ -16,27 +16,26 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="">
+        <a class="nav-link" routerLink="/student">
           <i class="fa fa-home"></i>
           Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="">
+        <a class="nav-link" routerLink="/student/profile">
           <i class="fa fa-user"> </i>
           Profile
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="">
+        <a class="nav-link" routerLink="/allschedules">
           <i class="fa fa-calendar" aria-hidden="true"> </i>
-
           Schedule
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="listgrades">
+        <a class="nav-link" routerLink="/listgrades">
           <i class="fa fa-graduation-cap"> </i>
           Poduim
         </a>
@@ -77,6 +76,9 @@
         Search
       </button>
     </form>
+    <button (click)="logout()" class="ml-3 btn btn-outline-info my-2 my-sm-0">
+      logout
+    </button>
   </div>
 </nav>
 <router-outlet name="student"></router-outlet>

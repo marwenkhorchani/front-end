@@ -11,5 +11,6 @@ export class AppComponent {
   constructor() {
     console.log(environment.apiUrl);
   }
+
   title = 'myNewApp';
 }
