@@ -1,48 +1,58 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminViewComponent } from './admin-view/admin-view.component';
+import { TeacherViewComponent } from './teacher-view/teacher-view.component';
+import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
+import { ScheduleComponent1 } from './components/schedule/schedule.component';
+import { AllschedulesComponent } from './components/allschedules/allschedules.component';
 import { LoginComponent } from './login/login.component';
 import { ListOfStudentComponent } from './list-of-student/list-of-student.component';
-
-import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 import { NavbarStudentComponent } from './navbar-student/navbar-student.component';
-import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.component';
 
-const routes: Routes = [
-  { path: '', component: LoginComponent },
-
+const Routes = [
   {
-    path: 'admin',
-    component: NavbarAdminComponent,
+    path: 'student/profile',
+    component: StudentProfileComponent,
   },
   {
-    path: 'admin/listgrades',
+    path: 'schedule/:query',
+    component: ScheduleComponent1,
+  },
+  {
+    path: 'allschedules',
+    component: AllschedulesComponent,
+  },
+  {
+    path: '',
+    component: LoginComponent,
+  },
+
+  {
+    path: 'listgrades',
     component: ListOfStudentComponent,
-   
+  },
+  {
+    path: 'admin',
+    component: AdminViewComponent,
   },
   {
     path: 'student',
     component: NavbarStudentComponent,
-   
   },
-  {
-    path: 'student/listgrades',
-    component: ListOfStudentComponent,
-   
-  },
+
   {
     path: 'teacher',
-    component: NavbarTeacherComponent,
-   
+    component: TeacherViewComponent,
   },
   {
-    path: 'teacher/listgrades',
-    component: ListOfStudentComponent,
-   
+    path: 'teacher/profile',
+    component: TeacherProfileComponent,
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(Routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -8,37 +8,39 @@ import { ListOfStudentsService } from '../services/list-of-students.service';
   styleUrls: ['./list-of-student.component.scss'],
 })
 export class ListOfStudentComponent implements OnInit {
-  arr: any=["Frist Best Grade","Second Best Grade","Third Best Grade"]
-  allStudentsGrates: any=[];
-  podium: any=[]
-
+  arr: any = ['Frist Best Grade', 'Second Best Grade', 'Third Best Grade'];
+  allStudentsGrates: any = [];
+  podium: any = [];
+  role = localStorage.getItem('role') || '';
   constructor(private router: Router, private service: ListOfStudentsService) {
     // this.loadAllStudents();
-    this.loadAlldammydata()
-    this.podiumStudent()
+    this.loadAlldammydata();
+    this.podiumStudent();
   }
 
   loadAllStudents() {
     this.service.getAllStudents().subscribe((response: any) => {
-      this.allStudentsGrates = response.sort((a:any, b:any) => b.grade - a.grade )
-      
+      this.allStudentsGrates = response.sort(
+        (a: any, b: any) => b.grade - a.grade
+      );
     });
   }
 
   loadAlldammydata() {
-    this.allStudentsGrates = this.service.students.sort((a, b) => b.grade - a.grade )
-   console.log(this.allStudentsGrates)
+    this.allStudentsGrates = this.service.students.sort(
+      (a, b) => b.grade - a.grade
+    );
+    console.log(this.allStudentsGrates);
   }
 
   podiumStudent() {
-    for(var i = 0; i < this.allStudentsGrates.length; i++){
-      if(i<=2){
-        this.podium.push(this.allStudentsGrates[i])
+    for (var i = 0; i < this.allStudentsGrates.length; i++) {
+      if (i <= 2) {
+        this.podium.push(this.allStudentsGrates[i]);
       }
     }
-    console.log(this.podium)
+    console.log(this.podium);
   }
-  
 
   ngOnInit(): void {}
 }

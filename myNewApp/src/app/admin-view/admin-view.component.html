@@ -1,0 +1,267 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="mt-5 container">
+  <mat-tab-group>
+    <mat-tab label="Students">
+      <div class="float-right mt-3 mb-3 mr-3">
+        <button mat-stroked-button color="primary" (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+          Add a Student
+        </button>
+      </div>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        multiTemplateDataRows
+        class="mat-elevation-z8"
+      >
+        <ng-container
+          matColumnDef="{{ column }}"
+          *ngFor="let column of columnsToDisplay"
+        >
+          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+          <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="columnsToDisplay.length"
+          >
+            <div
+              class="example-element-detail"
+              [@detailExpand]="
+                element == expandedElement ? 'expanded' : 'collapsed'
+              "
+            >
+              <img class="avatar" src="{{ element.img }}" alt="" />
+              <div style="width: 100%" class="example-element-description row">
+                <h3 class="col-5">BirthDay: {{ element.birthday }}</h3>
+                <h3 class="col-5">Phone Number: {{ element.phone }}</h3>
+                <div class="col-1 float-right">
+                  <button
+                    mat-mini-fab
+                    color="accent"
+                    (click)="openDialog(element)"
+                    aria-label="Example icon button with a delete icon"
+                  >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </div>
+                <div class="col-1 float-right">
+                  <button
+                    mat-mini-fab
+                    color="warn"
+                    aria-label="Example icon button with a delete icon"
+                    (click)="
+                      openInfoDialog({
+                        name: 'Delete Student',
+                        dis: 'Are you sure you want to delete this student',
+                        element: element
+                      })
+                    "
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr
+          mat-row
+          *matRowDef="let element; columns: columnsToDisplay"
+          class="example-element-row"
+          [class.example-expanded-row]="expandedElement === element"
+          (click)="
+            expandedElement = expandedElement === element ? null : element
+          "
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['expandedDetail']"
+          class="example-detail-row"
+        ></tr>
+      </table>
+    </mat-tab>
+    <mat-tab label="Teachers">
+      <div class="float-right mt-3 mb-3 mr-3">
+        <button
+          (click)="openTeacherDialog()"
+          mat-stroked-button
+          color="primary"
+        >
+          <mat-icon>add</mat-icon>
+          Add a Teacher
+        </button>
+      </div>
+      <table
+        mat-table
+        [dataSource]="dataSourceTeacher"
+        multiTemplateDataRows
+        class="mat-elevation-z8"
+      >
+        <ng-container
+          matColumnDef="{{ column }}"
+          *ngFor="let column of columnsToDisplayTeacher"
+        >
+          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+          <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="columnsToDisplayTeacher.length"
+          >
+            <div
+              class="example-element-detail"
+              [@detailExpand]="
+                element == expandedElementTech ? 'expanded' : 'collapsed'
+              "
+            >
+              <img class="avatar" src="{{ element.img }}" alt="" />
+              <div style="width: 100%" class="example-element-description row">
+                <h3 class="col-5">BirthDay: {{ element.birthday }}</h3>
+                <h3 class="col-5">Phone Number: {{ element.phone }}</h3>
+                <div class="col-1 float-right">
+                  <button
+                    mat-mini-fab
+                    color="accent"
+                    (click)="openTeacherDialog(element)"
+                    aria-label="Example icon button with a delete icon"
+                  >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </div>
+                <div class="col-1 float-right">
+                  <button
+                    mat-mini-fab
+                    color="warn"
+                    aria-label="Example icon button with a delete icon"
+                    (click)="
+                      openInfoDialog({
+                        name: 'Delete Teacher',
+                        dis: 'Are you sure you want to delete this Teacher',
+                        element: element
+                      })
+                    "
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayTeacher"></tr>
+        <tr
+          mat-row
+          *matRowDef="let element; columns: columnsToDisplayTeacher"
+          class="example-element-row"
+          [class.example-expanded-row]="expandedElementTech === element"
+          (click)="
+            expandedElementTech =
+              expandedElementTech === element ? null : element
+          "
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['expandedDetail']"
+          class="example-detail-row"
+        ></tr>
+      </table>
+    </mat-tab>
+    <mat-tab label="Admins">
+      <div class="float-right mt-3 mb-3 mr-3">
+        <button (click)="openAdminDialog()" mat-stroked-button color="primary">
+          <mat-icon>add</mat-icon>
+          Add an Admin
+        </button>
+      </div>
+      <table
+        mat-table
+        [dataSource]="dataSourceAdmin"
+        multiTemplateDataRows
+        class="mat-elevation-z8"
+      >
+        <ng-container
+          matColumnDef="{{ column }}"
+          *ngFor="let column of columnsToDisplayAdmin"
+        >
+          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+          <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="columnsToDisplayAdmin.length"
+          >
+            <div
+              class="example-element-detail"
+              [@detailExpand]="
+                element == expandedElementAdm ? 'expanded' : 'collapsed'
+              "
+            >
+              <img class="avatar" src="{{ element.img }}" alt="" />
+              <div style="width: 100%" class="example-element-description row">
+                <h3 class="col-5">BirthDay: {{ element.birthday }}</h3>
+                <h3 class="col-5">Phone Number: {{ element.phone }}</h3>
+                <div class="col-1 float-right">
+                  <button
+                    mat-mini-fab
+                    color="accent"
+                    (click)="openAdminDialog(element)"
+                    aria-label="Example icon button with a delete icon"
+                  >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </div>
+                <div class="col-1 float-right">
+                  <button
+                    mat-mini-fab
+                    color="warn"
+                    aria-label="Example icon button with a delete icon"
+                    (click)="
+                      openInfoDialog({
+                        name: 'Delete Admin',
+                        dis: 'Are you sure you want to delete this Admin',
+                        element: element
+                      })
+                    "
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayAdmin"></tr>
+        <tr
+          mat-row
+          *matRowDef="let element; columns: columnsToDisplayAdmin"
+          class="example-element-row"
+          [class.example-expanded-row]="expandedElementAdm === element"
+          (click)="
+            expandedElementAdm = expandedElementAdm === element ? null : element
+          "
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['expandedDetail']"
+          class="example-detail-row"
+        ></tr>
+      </table>
+    </mat-tab>
+  </mat-tab-group>
+</div>
