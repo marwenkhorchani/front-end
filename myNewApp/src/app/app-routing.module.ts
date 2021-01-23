@@ -9,8 +9,12 @@ import { AllschedulesComponent } from './components/allschedules/allschedules.co
 import { LoginComponent } from './login/login.component';
 import { ListOfStudentComponent } from './list-of-student/list-of-student.component';
 import { NavbarStudentComponent } from './navbar-student/navbar-student.component';
+import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.component';
+import { AnnouncementsComponent } from './announcements/announcements.component';
 
 const Routes = [
+  { path: 'announcements', component: AnnouncementsComponent },
+  { path: '', component: LoginComponent },
   {
     path: 'student/profile',
     component: StudentProfileComponent,

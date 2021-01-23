@@ -1,0 +1,66 @@
+<app-navbar-admin></app-navbar-admin>
+
+<h1 style="margin-left: 2%; margin-top: 2%">Announcements</h1>
+
+<button
+  *ngIf="role == 'admin'"
+  style="margin: 2%"
+  class="w3-button w3-xlarge w3-circle w3-red w3-card-4"
+  (click)="toggleModal('add', null)"
+>
+  +
+</button>
+
+<div class="container" style="max-width: 100%">
+  <div *ngFor="let ann of announcements" class="announcement">
+    <strong>{{ ann.text }}</strong
+    ><br /><br />{{ ann.date.slice(0, 7) + convertTime(ann.date) }}
+    <div style="display: flex; float: right">
+      <button *ngIf="role == 'admin'" (click)="toggleModal('edit', ann)">
+        edit</button
+      ><button *ngIf="role == 'admin'" (click)="toggleModal('delete', ann)">
+        delete
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal" *ngIf="displayModal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" (click)="displayModal = false">&times;</span>
+    </div>
+    <div class="modal-body" *ngIf="method === 'delete'">
+      <p>Are you sure you want to delete</p>
+      <button (click)="delete()">Yes</button
+      ><button (click)="displayModal = false">No</button>
+    </div>
+    <div class="modal-body" *ngIf="method === 'add'">
+      <p>New Announcement</p>
+      <form #f="ngForm">
+        <textarea
+          style="width: 80%; height: 16vh"
+          ngModel
+          name="body"
+          placeholder="type here..."
+        ></textarea>
+      </form>
+      <button (click)="add(f)">Add</button
+      ><button (click)="displayModal = false">Cancel</button>
+    </div>
+    <div class="modal-body" *ngIf="method === 'edit'">
+      <p>Edit Announcement</p>
+      <form #f="ngForm">
+        <textarea
+          style="width: 80%; height: 16vh"
+          ngModel="{{ ann.text }}"
+          name="body"
+          placeholder="type here..."
+        ></textarea>
+      </form>
+      <button (click)="edit(f)">Confirm</button
+      ><button (click)="displayModal = false">Cancel</button>
+    </div>
+  </div>
+</div>
