@@ -27,7 +27,9 @@ export class TeacherProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getTeacher('6009cd50b4ac7f6168b208bb');
+    let teacher = JSON.parse(localStorage.getItem('user') || '');
+    console.log(teacher);
+    this.getTeacher(teacher._id);
   }
   openTeacherDialog(data?: any): void {
     const dialogRef = this.dialog.open(AddTeacherDialogComponent, {

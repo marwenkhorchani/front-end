@@ -16,10 +16,25 @@ import { AddTeacherDialogComponent } from './add-teacher-dialog/add-teacher-dial
 import { AddAdminDialogComponent } from './add-admin-dialog/add-admin-dialog.component';
 import { TableStudentsComponent } from './table-students/table-students.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
+import {
+  ScheduleModule,
+  RecurrenceEditorModule,
+  DayService,
+  WeekService,
+  WorkWeekService,
+  MonthService,
+  MonthAgendaService,
+} from '@syncfusion/ej2-angular-schedule';
+import { ScheduleComponent1 } from './components/schedule/schedule.component';
+import { ListOfStudentComponent } from './list-of-student/list-of-student.component';
+import { EventsComponent } from './event/events/events.component';
+import { SharkDirective } from './shark.directive';
+import { AllschedulesComponent } from './components/allschedules/allschedules.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 import { NavbarStudentComponent } from './navbar-student/navbar-student.component';
 import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,6 +48,11 @@ import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.componen
     AddAdminDialogComponent,
     TableStudentsComponent,
     TeacherProfileComponent,
+    ScheduleComponent1,
+    SharkDirective,
+    AllschedulesComponent,
+    ListOfStudentComponent,
+    EventsComponent,
     LoginComponent,
     NavbarAdminComponent,
     NavbarStudentComponent,
@@ -47,8 +67,17 @@ import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ScheduleModule,
+    RecurrenceEditorModule,
   ],
-  providers: [],
+  providers: [
+    DayService,
+    WeekService,
+    WorkWeekService,
+    MonthService,
+    MonthAgendaService,
+    { provide: APP_BASE_HREF, useValue: '/' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

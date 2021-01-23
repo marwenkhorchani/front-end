@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('role', 'admin');
             localStorage['login_status'] = '1';
 
-            this.router.navigate(['/']);
+            this.router.navigate(['/admin']);
           } else if (
             res.username === this.username &&
             res.password === this.password &&
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
             localStorage['login_status'] = '1';
             localStorage.setItem('user', JSON.stringify(res));
             localStorage.setItem('role', 'student');
-            this.router.navigate(['/']);
+            this.router.navigate(['/student']);
           } else if (
             res.username === this.username &&
             res.password === this.password &&
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
             localStorage['login_status'] = '1';
             localStorage.setItem('user', JSON.stringify(res));
             localStorage.setItem('role', 'teacher');
-            this.router.navigate(['/']);
+            this.router.navigate(['/teacher']);
           } else if (res === null) {
             alert('invaild username or password');
           }

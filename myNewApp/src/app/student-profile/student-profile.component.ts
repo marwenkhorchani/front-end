@@ -26,7 +26,8 @@ export class StudentProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getStudent('6009866fccc77e5a2434ec00');
+    let stu = JSON.parse(localStorage.getItem('user') || "");
+    this.getStudent(stu._id);
   }
   openStudentDialog(data?: any): void {
     const dialogRef = this.dialog.open(AddDialogComponent, {

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { TeacherService } from '../services/teacher.service';
+import {Component, OnInit} from '@angular/core';
+import {TeacherService} from '../services/teacher.service';
 
 @Component({
   selector: 'app-teacher-view',
@@ -8,12 +8,15 @@ import { TeacherService } from '../services/teacher.service';
 })
 export class TeacherViewComponent implements OnInit {
   teacher = {};
-  classes = [{ name: undefined, student: undefined }];
+  classes = [{name: undefined, student: undefined}];
 
-  constructor(private teacherService: TeacherService) {}
+  constructor(private teacherService: TeacherService) {
+  }
 
   ngOnInit(): void {
-    this.getTeacher('6009cd50b4ac7f6168b208bb');
+    let teacher = JSON.parse(localStorage.getItem('user') || "");
+    console.log(teacher);
+    this.getTeacher(teacher._id);
     console.log('teacher', this.teacher);
     console.log('classes', this.classes);
   }
