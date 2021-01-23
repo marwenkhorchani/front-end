@@ -1,0 +1,54 @@
+<app-navbar-admin *ngIf="role === 'admin'"></app-navbar-admin>
+<app-navbar-teacher *ngIf="role === 'teacher'"></app-navbar-teacher>
+<app-navbar-student *ngIf="role === 'student'"></app-navbar-student>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="table-responsive" id="sailorTableArea">
+  <table
+    id="sailorTable"
+    class="table table-striped table-bordered"
+    width="100%"
+  >
+  <h4><strong> Top 3 </strong></h4>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Fist Name</th>
+        <th>Last Name</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of podium; let i = index">
+        <th>{{ arr[i] }}</th>
+        <td>{{ item.firstname }}</td>
+        <td>{{ item.lastname }}</td>
+        <td>{{ item.grade }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-responsive" id="sailorTableAreaa">
+  <table
+    id="sailorTable"
+    class="table table-striped table-bordered"
+    width="100%"
+  >
+  <h4><strong> List of all student</strong></h4>
+    <thead>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody class="tbody1">
+      <tr *ngFor="let item of allStudentsGrates">
+        <td>{{ item.firstname }}</td>
+        <td>{{ item.lastname }}</td>
+        <td>{{ item.grade }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

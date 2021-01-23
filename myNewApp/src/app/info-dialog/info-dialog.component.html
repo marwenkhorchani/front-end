@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>{{ data.name }}</h1>
+<div mat-dialog-content>{{ data.dis }}</div>
+<div *ngIf="data.element">
+  <h3>Username: {{ data.element.username }}</h3>
+  <h3>Email: {{ data.element.email }}</h3>
+  <h3 *ngIf="data.element.level">
+    {{ data.element.level }}{{ data.element.class }}
+  </h3>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button
+    *ngIf="data.name === 'Delete Student'"
+    (click)="deleteStudent(data.element._id)"
+    mat-button
+    mat-dialog-close
+  >
+    Yes
+  </button>
+  <button
+    *ngIf="data.name === 'Delete Teacher'"
+    (click)="deleteTeacher(data.element._id)"
+    mat-button
+    mat-dialog-close
+  >
+    Yes
+  </button>
+  <button
+    *ngIf="data.name === 'Delete Admin'"
+    (click)="deleteAdmin(data.element._id)"
+    mat-button
+    mat-dialog-close
+  >
+    Yes
+  </button>
+</div>

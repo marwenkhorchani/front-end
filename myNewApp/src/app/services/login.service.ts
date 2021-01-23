@@ -11,11 +11,12 @@ export class LoginService {
     this.http = httpClient;
   }
 
-  login(username: String, password: String, role:String) {
+  // tslint:disable-next-line:ban-types
+  login(username: String, password: String, role: String) {
     const body = {
-      username: username,
-      password: password,
-      role: role,
+      username,
+      password,
+      role,
     };
 
     return this.http.post(`${environment.apiUrl}/api/login`, body);

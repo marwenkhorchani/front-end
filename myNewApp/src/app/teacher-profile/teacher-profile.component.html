@@ -1,0 +1,38 @@
+<app-navbar-teacher></app-navbar-teacher>
+<div class="mt-5 container">
+  <mat-card class="example-card">
+    <div class="float-right">
+      <mat-card-actions>
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="openTeacherDialog(teacher)"
+        >
+          Edit Profile
+        </button>
+      </mat-card-actions>
+    </div>
+    <div class="row">
+      <img class="profileImg col-4" src="{{ teacher.img }}" alt="" />
+      <div class="col-8 details">
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>Username: {{ teacher.username }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>First Name: {{ teacher.firstname }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Last Name: {{ teacher.lastname }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>CIN: {{ teacher.cin }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Email: {{ teacher.email }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Phone Number: {{ teacher.phone }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Birthday: {{ teacher.birthday }}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </div>
+    </div>
+  </mat-card>
+</div>

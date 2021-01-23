@@ -1,0 +1,27 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<app-navbar-admin *ngIf="admin !==null"></app-navbar-admin>
+<app-navbar-student *ngIf="student !== null"></app-navbar-student>
+<app-navbar-teacher  *ngIf="teacher !== null"></app-navbar-teacher>
+<br/>
+<div class="container bootstrap snippets bootdey">
+    <h1 class="text-center text-primary title">Schedule of Classes</h1>
+    <hr class="divider-title">
+   <div class="row" >
+    <div class="col-ms-10 col-md-4" *ngFor="let class of classes">
+        <div class="project">
+            <figure class="img-responsive">
+              <img src="https://res.cloudinary.com/dtl8igxn0/image/upload/v1611335195/stock-photo-business-woman-schedule-her-weekly-program-on-tablet-1498571789_zc6sji.jpg">
+              <figcaption>
+                    <span class="project-details">className :{{class.name}}</span>
+                </figcaption>
+                <span class="actions">
+                        <button class="btn btn-warning bnt-action"(click)="getschedule(class.name)" type="submit" >View </button>
+                </span>
+            </figure>
+        </div>
+    </div>
+
+
+  </div>
+</div>
