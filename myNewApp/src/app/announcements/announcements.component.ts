@@ -14,6 +14,7 @@ export class AnnouncementsComponent implements OnInit {
   ann: any;
   method: any;
   announcements: any;
+  role = localStorage.getItem('role');
   constructor(private service: AnnouncementService) {}
 
   ngOnInit(): void {

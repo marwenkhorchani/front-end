@@ -45,7 +45,7 @@ export class ScheduleComponent1 implements OnInit {
   public newViewMode: View = 'Month';
 
   @ViewChild('scheduleObj', { static: true })
-  public scheduleObj!: ScheduleComponent;
+  public scheduleObfitj!: ScheduleComponent;
   public views: Array<string> = [
     'Day',
     'Week',
