@@ -1,0 +1,77 @@
+<h1 mat-dialog-title>{{ data ? "Edit Admin" : "Add a Admin" }}</h1>
+<div
+  mat-dialog-content
+  style="margin-left: 2%; margin-right: 2%"
+  [formGroup]="adminForm"
+>
+  <mat-form-field appearance="legacy" style="width: 100%">
+    <mat-label>Username</mat-label>
+    <label>
+      <input formControlName="username" matInput required />
+    </label>
+  </mat-form-field>
+  <mat-form-field appearance="legacy" style="width: 100%">
+    <mat-label>First Name</mat-label>
+    <label>
+      <input formControlName="firstname" matInput required />
+    </label>
+  </mat-form-field>
+  <mat-form-field appearance="legacy" style="width: 100%">
+    <mat-label>Last Name</mat-label>
+    <label>
+      <input formControlName="lastname" matInput required />
+    </label>
+  </mat-form-field>
+  <mat-form-field appearance="legacy" style="width: 100%">
+    <mat-label>Phone Number</mat-label>
+    <label>
+      <input formControlName="phone" matInput required />
+    </label>
+  </mat-form-field>
+
+  <mat-form-field appearance="legacy" style="width: 100%">
+    <mat-label>CIN</mat-label>
+    <label>
+      <input formControlName="cin" matInput required />
+    </label>
+  </mat-form-field>
+
+  <div class="example-container" style="width: 100%">
+    <mat-form-field style="width: 100%" appearance="legacy">
+      <mat-label>Email</mat-label>
+      <label>
+        <input
+          formControlName="email"
+          matInput
+          placeholder="pat@example.com"
+          [formControl]="email"
+          required
+        />
+      </label>
+      <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-form-field style="width: 100%" appearance="legacy">
+    <mat-label>Birth date</mat-label>
+    <label>
+      <input
+        formControlName="birthday"
+        matInput
+        [matDatepicker]="picker"
+        required
+      />
+    </label>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button
+    mat-button
+    (click)="data ? updateAdmin(data._id) : addAdmin()"
+    cdkFocusInitial
+  >
+    Submit
+  </button>
+</div>
