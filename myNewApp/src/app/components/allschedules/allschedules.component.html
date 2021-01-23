@@ -1,8 +1,95 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<app-navbar-admin *ngIf="admin !==null"></app-navbar-admin>
+<!-- <app-navbar-admin *ngIf="admin !==null"></app-navbar-admin>
 <app-navbar-student *ngIf="student !== null"></app-navbar-student>
-<app-navbar-teacher  *ngIf="teacher !== null"></app-navbar-teacher>
+<app-navbar-teacher  *ngIf="teacher !== null"></app-navbar-teacher> -->
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+  <img
+    src="https://static1.squarespace.com/static/5521a4b4e4b097abc6b22953/t/5772a72d8419c2ed25253457/1524844181835/"
+    class="logo"
+  />
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" >
+          <i class="fa fa-home"></i>
+          Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fa fa-user"> </i>
+          Profiles
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" >
+          <i class="fa fa-calendar" aria-hidden="true"> </i>
+          Schedule
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" >
+          <i class="fa fa-graduation-cap"> </i>
+          Poduim
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" >
+          <i class="fa fa-bullhorn" aria-hidden="true"> </i>
+          Announcement
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" >
+          <i class="fa fa-bell">
+            <span class="badge badge-info">1</span>
+          </i>
+          Alerts
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" >
+          <i class="fa fa-globe">
+            <span class="badge badge-success">3</span>
+          </i>
+          Events
+        </a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+    <button class="ml-3 btn btn-outline-info my-2 my-sm-0">
+      logout
+    </button>
+  </div>
+</nav>
+<router-outlet name="admin"></router-outlet>
+
+
 <br/>
 <div class="container bootstrap snippets bootdey">
     <h1 class="text-center text-primary title">Schedule of Classes</h1>
@@ -11,7 +98,7 @@
     <div class="col-ms-10 col-md-4" *ngFor="let class of classes">
         <div class="project">
             <figure class="img-responsive">
-              <img src="https://res.cloudinary.com/dtl8igxn0/image/upload/v1611335195/stock-photo-business-woman-schedule-her-weekly-program-on-tablet-1498571789_zc6sji.jpg">
+              <img src="https://us.123rf.com/450wm/flynt/flynt1401/flynt140100395/25087860-mois-et-dates-indiqu%C3%A9es-sur-le-calendrier-tout-en-tournant-les-pages.jpg?ver=6">
               <figcaption>
                     <span class="project-details">className :{{class.name}}</span>
                 </figcaption>

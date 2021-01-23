@@ -60,6 +60,7 @@ export class ScheduleComponent1 implements OnInit {
     slotCount: 6,
   };
   public data: any = [];
+  scheduleObj: any;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -107,7 +108,7 @@ export class ScheduleComponent1 implements OnInit {
       console.log(args.data);
 
       console.log(args.requestType);
-      const item = this.scheduleObj.activeEventData.event;
+      const item = this.scheduleObj .activeEventData.event;
       // @ts-ignore
       const id = item._id;
       // tslint:disable-next-line:prefer-const
