@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TeacherViewComponent } from './teacher-view/teacher-view.component';
+import {AnnouncementsComponent} from './announcements/announcements.component'
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
@@ -57,6 +58,7 @@ import { APP_BASE_HREF } from '@angular/common';
     NavbarAdminComponent,
     NavbarStudentComponent,
     NavbarTeacherComponent,
+    AnnouncementsComponent,
   ],
   imports: [
     BrowserModule,
