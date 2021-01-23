@@ -1,9 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   FormBuilder,
   FormControl,
@@ -22,7 +18,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AddDialogComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
-
   levels = CLASS_DATA;
   classes = [{ name: 'none' }];
   disClass = true;
@@ -72,6 +67,7 @@ export class AddDialogComponent implements OnInit {
       birthday: ['', Validators.required],
       class: ['', Validators.required],
       level: ['', Validators.required],
+      password: ['', Validators.required],
     });
     this.patchValues();
   }
