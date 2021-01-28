@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 
 @Component({
-  selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.scss'],
+  selector: 'app-addevents',
+  templateUrl: './addevents.component.html',
+  styleUrls: ['./addevents.component.scss']
 })
-export class EventsComponent implements OnInit {
+export class AddeventsComponent implements OnInit {
   acitvityName: any = '';
   description: any = '';
   date: any = '';
@@ -15,6 +15,13 @@ export class EventsComponent implements OnInit {
   events: any = [];
   constructor(private router: Router, private service: EventsService) {
     this.getEvents()
+   }
+
+  addEvent() {
+    console.log(this.acitvityName)
+    this.service.addEvent(this.acitvityName, this.description, this.date, this.hour).subscribe((res) => {
+      console.log(res);
+    });
   }
 
   getEvents() {
@@ -27,6 +34,7 @@ export class EventsComponent implements OnInit {
       });
   }
 
+  ngOnInit(): void {
+  }
 
-  ngOnInit(): void {}
 }

@@ -11,6 +11,10 @@ import { ListOfStudentComponent } from './list-of-student/list-of-student.compon
 import { NavbarStudentComponent } from './navbar-student/navbar-student.component';
 import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
+import { AllCoursesComponent } from './admin/all-courses/all-courses.component';
+import { EventsComponent } from './event/events/events.component';
+import { AddeventsComponent } from './event/addevents/addevents.component';
+import { TaskViewComponent } from './pages/task-view/task-view.component';
 
 const Routes = [
   { path: 'announcements', component: AnnouncementsComponent },
@@ -19,6 +23,21 @@ const Routes = [
     path: 'student/profile',
     component: StudentProfileComponent,
   },
+  { path: 'task', component: TaskViewComponent },
+  {
+    path: 'student/displayEvents',
+    component: EventsComponent,
+  },
+  {
+    path: 'teacher/displayEvents',
+    component: EventsComponent,
+  },
+  {
+    path: 'admin/addEvent',
+    component: AddeventsComponent,
+  },
+  
+  { path: 'allCourses', component: AllCoursesComponent },
   {
     path: 'schedule/:query',
     component: ScheduleComponent1,

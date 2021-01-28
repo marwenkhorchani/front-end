@@ -83,10 +83,51 @@
         Search
       </button>
     </form>
-    <button (click)="logout()" class="ml-3 btn btn-outline-info my-2 my-sm-0">
+    <button  class="ml-3 btn btn-outline-info my-2 my-sm-0">
       logout
     </button>
   </div>
 </nav>
-
+<br>
+<br>
+<br>
 <router-outlet name="teacher"></router-outlet>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click'); clicked = false"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div style="display: center">
+      <app-add-course></app-add-course>
+    </div>
+  </ng-template>
+  
+  <button
+    class="btn btn-lg btn-outline-primary"
+    (click)="open(content)"
+    [disabled]="clicked"
+    (click)="clicked = true"
+  >
+    Add New Course
+  </button>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-3" *ngFor="let course of courses">
+      <div class="card">
+        <div class="card-header px-4 pt-4">
+        <button>Add This Course</button>
+  
+          <h3 class="card-title mb-0">Title: {{ course.title }}</h3>
+          <div class="badge bg-success my-2">by : teacherName</div>
+          <img src="https://i.pinimg.com/originals/08/1d/9f/081d9fbd94372cd42dc6b0368f4628f8.png"/>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -28,7 +28,6 @@ import {
 } from '@syncfusion/ej2-angular-schedule';
 import { ScheduleComponent1 } from './components/schedule/schedule.component';
 import { ListOfStudentComponent } from './list-of-student/list-of-student.component';
-import { EventsComponent } from './event/events/events.component';
 import { SharkDirective } from './shark.directive';
 import { AllschedulesComponent } from './components/allschedules/allschedules.component';
 import { LoginComponent } from './login/login.component';
@@ -36,6 +35,15 @@ import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 import { NavbarStudentComponent } from './navbar-student/navbar-student.component';
 import { NavbarTeacherComponent } from './navbar-teacher/navbar-teacher.component';
 import { APP_BASE_HREF } from '@angular/common';
+import { AllCoursesComponent } from './admin/all-courses/all-courses.component';
+import { AddCourseComponent } from './teacher/add-course/add-course/add-course.component';
+import { AddeventsComponent } from './event/addevents/addevents.component';
+import { EventsComponent } from './event/events/events.component';
+import { TaskViewComponent } from './pages/task-view/task-view.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -53,12 +61,20 @@ import { APP_BASE_HREF } from '@angular/common';
     SharkDirective,
     AllschedulesComponent,
     ListOfStudentComponent,
-    EventsComponent,
     LoginComponent,
     NavbarAdminComponent,
     NavbarStudentComponent,
     NavbarTeacherComponent,
     AnnouncementsComponent,
+    AllCoursesComponent,
+    AddCourseComponent,
+    AddeventsComponent,
+    EventsComponent,
+    TaskViewComponent,
+  
+   
+    
+   
   ],
   imports: [
     BrowserModule,
